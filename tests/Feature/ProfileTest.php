@@ -96,4 +96,12 @@ class ProfileTest extends TestCase
 
         $this->assertNotNull($user->fresh());
     }
+    public function test_payment_page_can_be_rendered()
+    {
+        $user = \App\Models\User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this->get('/payment');
+        $response->assertStatus(200);
+    }
 }
